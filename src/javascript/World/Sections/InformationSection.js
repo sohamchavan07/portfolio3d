@@ -101,7 +101,7 @@ export default class InformationSection
                 labelTexture: this.resources.items.informationContactLinkedinLabelTexture
             },
             {
-                href: 'mailto:soham.chavan@gmail.com',
+                href: 'mailto:sohamchavan.sc07@gmail.com',
                 labelTexture: this.resources.items.informationContactMailLabelTexture
             }
         ]
