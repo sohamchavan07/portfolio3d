@@ -110,12 +110,12 @@ export default class Resources extends EventEmitter
             { name: 'projectsBonhomme10ansFloor', source: './models/projects/bonhomme10ans/floorTexture.webp', type: 'texture' },
             { name: 'projectsThreejsJourneyFloor', source: './models/projects/threejsJourney/floorTexture.webp', type: 'texture' },
             { name: 'projectsMadboxFloor', source: './models/projects/madbox/floorTexture.png', type: 'texture' },
-            { name: 'projectsScoutFloor', source: './models/projects/scout/floorTexture.png', type: 'texture' },
+
             { name: 'projectsChartogneFloor', source: './models/projects/chartogne/floorTexture.png', type: 'texture' },
             // { name: 'projectsZenlyFloor', source: './models/projects/zenly/floorTexture.png', type: 'texture' },
-            { name: 'projectsCitrixRedbullFloor', source: './models/projects/citrixRedbull/floorTexture.png', type: 'texture' },
-            { name: 'projectsPriorHoldingsFloor', source: './models/projects/priorHoldings/floorTexture.png', type: 'texture' },
-            { name: 'projectsOranoFloor', source: './models/projects/orano/floorTexture.png', type: 'texture' },
+
+
+
             // { name: 'projectsGleecChatFloor', source: './models/projects/gleecChat/floorTexture.png', type: 'texture' },
             // { name: 'projectsKepplerFloor', source: './models/projects/keppler/floorTexture.png', type: 'texture' },
 
