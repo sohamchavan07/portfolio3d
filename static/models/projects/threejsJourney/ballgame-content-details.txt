@@ -1,0 +1,88 @@
+BALLGAME PROJECT - DETAILED CONTENT SPECIFICATIONS
+=================================================
+
+This file provides specific content suggestions for each project image slide.
+
+SLIDE A - MAIN TITLE (slideA.webp)
+==================================
+LAYOUT: Centered, vertical arrangement
+MAIN TITLE: "BALL GAME"
+SUBTITLE: "Interactive 3D Web Experience"
+DESCRIPTION: "A dynamic 3D game built with modern web technologies"
+OPTIONAL ELEMENTS: 
+- 3D ball icon or illustration
+- "PLAY NOW" button design
+- Technology badges (Three.js, WebGL, etc.)
+
+SLIDE B - GAMEPLAY SHOWCASE (slideB.webp)
+==========================================
+LAYOUT: Split or grid layout
+CONTENT SECTIONS:
+1. Game Screenshot: Show actual gameplay or mockup
+2. Key Features:
+   - "3D Physics Engine"
+   - "Responsive Controls"
+   - "Real-time Rendering"
+3. Visual Elements: Game interface, ball physics, environment
+4. Style: Action-oriented, engaging, showcases interactivity
+
+SLIDE C - TECHNICAL STACK (slideC.webp)
+=======================================
+LAYOUT: Code-focused, technical presentation
+CONTENT:
+- "Built with Three.js & WebGL"
+- "HTML5 Canvas Rendering"
+- "JavaScript ES6+"
+- "Responsive Web Design"
+- "Cross-browser Compatible"
+- "Mobile-optimized Controls"
+STYLE: Developer-focused, clean typography, code aesthetic
+
+SLIDE D - PROJECT OVERVIEW (slideD.webp)
+========================================
+LAYOUT: Information architecture, feature highlights
+CONTENT:
+- "Interactive 3D Physics"
+- "Real-time Game Engine"
+- "Cross-platform Gaming"
+- "Modern Web Standards"
+- "Performance Optimized"
+- "User Experience Focused"
+STYLE: Professional, informative, portfolio showcase
+
+DESIGN GUIDELINES:
+==================
+COLORS:
+- Primary: Orange (#FF6B35 or similar to portfolio)
+- Secondary: White (#FFFFFF)
+- Accent: Black (#000000)
+- Background: Clean, modern, professional
+
+TYPOGRAPHY:
+- Main titles: Bold, large, clear
+- Subtitles: Medium weight, readable
+- Body text: Clean, professional
+- Code text: Monospace font for technical content
+
+LAYOUT PRINCIPLES:
+- Clean, minimal design
+- Good contrast for readability
+- Consistent spacing and alignment
+- Professional portfolio aesthetic
+- Mobile-friendly proportions
+
+TECHNICAL REQUIREMENTS:
+=======================
+- Format: WebP
+- Resolution: Match existing slide dimensions
+- File size: Optimized for web (under 500KB each)
+- Quality: High-quality, professional appearance
+- Compatibility: Web-safe colors and fonts
+
+CONTENT FOCUS:
+==============
+- Emphasize the game's 3D nature
+- Highlight technical achievements
+- Showcase user experience
+- Demonstrate professional quality
+- Align with portfolio aesthetic

@@ -1,0 +1,91 @@
+BALLGAME FLOOR TEXTURE SPECIFICATIONS
+=====================================
+
+This file describes the requirements for creating a new floor texture that will work
+well for 3D rendering and complement your "BALL REFLECTOR JOURNEY" ballgame project.
+
+TECHNICAL REQUIREMENTS FOR 3D FLOOR TEXTURES:
+=============================================
+
+1. **SEAMLESS REPETITION:**
+   - The texture must tile seamlessly (edges should connect perfectly)
+   - No visible seams when applied to 3D surfaces
+   - Pattern should flow naturally across the entire floor
+
+2. **RESOLUTION & FORMAT:**
+   - Format: WebP (to match current file)
+   - Resolution: Match existing floorTexture.webp dimensions
+   - File size: Optimized for web (under 300KB)
+   - Quality: High enough for close-up viewing
+
+3. **3D RENDERING COMPATIBILITY:**
+   - Subtle enough not to interfere with 3D objects
+   - Good contrast for visibility without being distracting
+   - Works well with lighting and shadows
+
+DESIGN THEMES FOR BALLGAME PROJECT:
+===================================
+
+**Option 1: ARCADE-STYLE PATTERN**
+- Subtle grid or hexagonal pattern
+- Colors: Dark gray/black base with subtle orange accents
+- Style: Gaming/arcade aesthetic
+- Pattern: Small, repeating geometric shapes
+
+**Option 2: BALL PHYSICS THEME**
+- Subtle circular or spherical patterns
+- Colors: Dark background with light gray/white circles
+- Style: Represents the ball mechanics of your game
+- Pattern: Small, scattered circles or dots
+
+**Option 3: MODERN TECH PATTERN**
+- Abstract geometric or circuit-like patterns
+- Colors: Dark base with subtle blue/cyan accents
+- Style: Modern, technological aesthetic
+- Pattern: Lines, angles, or circuit elements
+
+**Option 4: MINIMAL SUBTLE TEXTURE**
+- Very subtle noise or grain pattern
+- Colors: Dark gray/black with minimal variation
+- Style: Clean, professional, understated
+- Pattern: Subtle noise or texture variation
+
+RECOMMENDED DESIGN APPROACH:
+============================
+
+**Primary Choice: Option 1 (Arcade-Style Pattern)**
+- Fits the "BALL REFLECTOR JOURNEY" arcade theme
+- Subtle enough for 3D rendering
+- Professional appearance
+- Complements your portfolio aesthetic
+
+**Design Elements:**
+- Base: Dark gray (#2a2a2a) or black (#000000)
+- Accent: Subtle orange (#ff6b35) at 10-15% opacity
+- Pattern: Small hexagonal or grid pattern
+- Scale: Pattern should be small enough to not interfere with 3D objects
+
+**Alternative: Option 4 (Minimal Subtle Texture)**
+- If you prefer a more understated look
+- Dark base with very subtle texture variation
+- Professional and clean appearance
+- Won't compete with your project content
+
+CREATION GUIDELINES:
+====================
+
+1. **Start with a dark base** (dark gray or black)
+2. **Add subtle pattern** at low opacity
+3. **Test for seamless tiling** before finalizing
+4. **Ensure good contrast** for visibility
+5. **Keep it subtle** - it should enhance, not dominate
+
+**Software Recommendations:**
+- Photoshop, GIMP, or similar image editing software
+- Use "Offset" filter to test seamless tiling
+- Export as WebP with good compression
+
+**Testing:**
+- Apply to a flat surface in your 3D software
+- Check for visible seams or repetition artifacts
+- Ensure it looks good from different camera angles
