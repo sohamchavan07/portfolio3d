@@ -1,0 +1,70 @@
+BALLGAME FLOOR TEXTURE - QUICK REFERENCE
+========================================
+
+COLOR PALETTE:
+==============
+
+**Primary Colors:**
+- Base: #2a2a2a (Dark Gray) or #000000 (Black)
+- Accent: #ff6b35 (Portfolio Orange) at 10-15% opacity
+- Highlight: #ffffff (White) at 5-10% opacity
+
+**Alternative Color Schemes:**
+- Scheme 1: #1a1a1a (Very Dark Gray) + #ff6b35 (Orange)
+- Scheme 2: #000000 (Black) + #4a4a4a (Light Gray)
+- Scheme 3: #2a2a2a (Dark Gray) + #00aaff (Blue)
+
+PATTERN SUGGESTIONS:
+====================
+
+**Option 1: Hexagonal Grid (Recommended)**
+- Small hexagons arranged in honeycomb pattern
+- Size: 20-30px per hexagon
+- Spacing: 2-3px between hexagons
+- Opacity: 15-20% for subtle effect
+
+**Option 2: Dot Matrix**
+- Small circles arranged in grid
+- Size: 3-5px diameter
+- Spacing: 20-25px between dots
+- Opacity: 10-15% for subtle effect
+
+**Option 3: Circuit Lines**
+- Thin lines forming circuit-like patterns
+- Line width: 1-2px
+- Spacing: 15-20px between elements
+- Opacity: 20-25% for visibility
+
+**Option 4: Noise Texture**
+- Subtle noise or grain pattern
+- Intensity: 5-10%
+- Scale: Fine grain (not chunky)
+- Opacity: 15-20% for subtle effect
+
+QUICK CREATION STEPS:
+=====================
+
+1. **Create new document** with dimensions matching current floorTexture.webp
+2. **Fill background** with dark gray (#2a2a2a)
+3. **Add pattern layer** with one of the options above
+4. **Set pattern opacity** to 15-20%
+5. **Test seamless tiling** using Offset filter
+6. **Export as WebP** with good compression
+
+**Photoshop/GIMP Steps:**
+- Create pattern layer
+- Use "Offset" filter (Filter > Other > Offset)
+- Check for seamless edges
+- Adjust if needed
+- Export as WebP
+
+**Recommended Pattern:**
+- Hexagonal grid with #ff6b35 orange at 15% opacity
+- Base color: #2a2a2a dark gray
+- Pattern size: Small enough to not interfere with 3D objects
+
+**File Requirements:**
+- Format: WebP
+- Resolution: Match existing floorTexture.webp
+- File size: Under 300KB
+- Seamless tiling: Essential for 3D rendering

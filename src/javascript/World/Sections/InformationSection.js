@@ -89,7 +89,7 @@ export default class InformationSection
         // Options
         this.links.options = [
             {
-                href: 'https://twitter.com/soham_chavan/',
+                href: 'https://x.com/SOHAM_CHAVAN07/',
                 labelTexture: this.resources.items.informationContactTwitterLabelTexture
             },
             {

@@ -1,0 +1,52 @@
+BALLGAME PROJECT - EXACT TEXT CONTENT
+====================================
+
+Copy and paste these exact text contents for each slide:
+
+SLIDE A (slideA.webp):
+======================
+MAIN TITLE: "BALL GAME"
+SUBTITLE: "Interactive 3D Web Experience"
+DESCRIPTION: "A dynamic 3D game built with modern web technologies"
+
+SLIDE B (slideB.webp):
+======================
+SECTION 1: "GAMEPLAY FEATURES"
+- 3D Physics Engine
+- Responsive Controls  
+- Real-time Rendering
+- Interactive Environment
+
+SLIDE C (slideC.webp):
+======================
+SECTION 1: "TECHNICAL STACK"
+- Built with Three.js & WebGL
+- HTML5 Canvas Rendering
+- JavaScript ES6+
+- Responsive Web Design
+- Cross-browser Compatible
+
+SLIDE D (slideD.webp):
+======================
+SECTION 1: "PROJECT HIGHLIGHTS"
+- Interactive 3D Physics
+- Real-time Game Engine
+- Cross-platform Gaming
+- Modern Web Standards
+- Performance Optimized
+
+QUICK COPY TEXT:
+===============
+Slide A: "BALL GAME" + "Interactive 3D Web Experience" + "A dynamic 3D game built with modern web technologies"
+
+Slide B: "GAMEPLAY FEATURES" + "3D Physics Engine" + "Responsive Controls" + "Real-time Rendering"
+
+Slide C: "TECHNICAL STACK" + "Built with Three.js & WebGL" + "HTML5 Canvas Rendering" + "JavaScript ES6+"
+
+Slide D: "PROJECT HIGHLIGHTS" + "Interactive 3D Physics" + "Real-time Game Engine" + "Cross-platform Gaming"
+
+NOTES:
+- Use consistent typography across all slides
+- Maintain the portfolio's orange/white color scheme
+- Keep text clear and readable
+- Ensure professional appearance

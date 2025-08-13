@@ -1,0 +1,52 @@
+BALLGAME PROJECT IMAGE SPECIFICATIONS
+====================================
+
+This file describes the content that should be created for the new ballgame project images
+to replace the existing THREE.JS JOURNEY content.
+
+REQUIRED IMAGES:
+- slideA.webp (Main title slide)
+- slideB.webp (Gameplay screenshot)
+- slideC.webp (Technical details)
+- slideD.webp (Project overview)
+
+IMAGE SPECIFICATIONS:
+====================
+
+slideA.webp - MAIN TITLE SLIDE
+- Background: Clean, modern design (can use orange/white theme to match portfolio)
+- Main Title: "BALL GAME" (large, bold, white text)
+- Subtitle: "Interactive 3D Web Game" (smaller text below main title)
+- Optional: Small 3D ball or game icon
+- Style: Professional, portfolio-worthy presentation
+
+slideB.webp - GAMEPLAY SCREENSHOT
+- Content: Screenshot or mockup of the actual ballgame in action
+- Show: Game interface, ball physics, controls, or gameplay elements
+- Style: High-quality, clear, showcasing the game's visual appeal
+- Background: Can be the game itself or a styled presentation frame
+
+slideC.webp - TECHNICAL DETAILS
+- Content: Code snippets, technology stack, or technical highlights
+- Show: Programming languages, frameworks, libraries used
+- Examples: "Built with Three.js", "HTML5 Canvas", "JavaScript", etc.
+- Style: Clean, code-focused, developer-friendly presentation
+
+slideD.webp - PROJECT OVERVIEW
+- Content: Project description and key features
+- Show: What the game does, target audience, key achievements
+- Examples: "Interactive 3D physics", "Responsive design", "Cross-platform"
+- Style: Informative, professional, portfolio showcase
+
+GENERAL REQUIREMENTS:
+- Format: WebP (same as current files)
+- Resolution: Match existing image dimensions
+- Style: Consistent with portfolio aesthetic
+- Text: Clear, readable, professional
+- Colors: Can use portfolio color scheme (orange, white, black)
+
+NOTES:
+- These images will replace the current THREE.JS JOURNEY content
+- Keep the same file names (slideA.webp, slideB.webp, slideC.webp, slideD.webp)
+- The images should represent your ballgame project professionally
+- Consider the portfolio's overall design aesthetic when creating these images
