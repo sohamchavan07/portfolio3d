@@ -213,8 +213,8 @@ export default class IntroSection
         }
         const textMesh = new THREE.Mesh(textGeometry, material)
 
-		// Center the text in the intro area
-		textMesh.position.set(this.x + 0, this.y + 0, 1.0)
+		// Center the text in the intro area and move one step forward (positive Y)
+		textMesh.position.set(this.x + 2, 1.0, this.y + 0, 1.0)
 		textMesh.rotation.set(Math.PI * 0.5, 0, 0)
         textMesh.castShadow = true
         textMesh.receiveShadow = true
