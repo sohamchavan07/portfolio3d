@@ -166,7 +166,7 @@ export default class IntroSection
         const fontLoader = new FontLoader()
         const font = fontLoader.parse(helvetiker)
 
-		const textGeometry = new TextGeometry('SOHAM CHAVAN', {
+		const textGeometry = new TextGeometry('SOHAM   CHAVAN', {
             font,
 			size: 0.9,
 			height: 0.12,
@@ -179,7 +179,7 @@ export default class IntroSection
         })
         textGeometry.computeBoundingBox()
         if (textGeometry.boundingBox) {
-            const centerX = (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x) * 0.5
+            const centerX = (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x) * 0.8
             const centerY = (textGeometry.boundingBox.max.y - textGeometry.boundingBox.min.y) * 0.5
             textGeometry.translate(-centerX, -centerY, 0)
             
@@ -214,8 +214,8 @@ export default class IntroSection
         const textMesh = new THREE.Mesh(textGeometry, material)
 
 		// Center the text in the intro area and move one step forward (positive Y)
-		textMesh.position.set(this.x + 2, 1.0, this.y + 0, 1.0)
-		textMesh.rotation.set(Math.PI * 0.5, 0, 0)
+		textMesh.position.set(this.x + 3.0, this.y + - 9)
+		textMesh.rotation.set(Math.PI * 0.0, 0, 0)
         textMesh.castShadow = true
         textMesh.receiveShadow = true
         
