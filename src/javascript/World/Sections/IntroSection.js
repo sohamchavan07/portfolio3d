@@ -166,14 +166,14 @@ export default class IntroSection
         const fontLoader = new FontLoader()
         const font = fontLoader.parse(helvetiker)
 
-        const textGeometry = new TextGeometry('SOHAM CHAVAN', {
+		const textGeometry = new TextGeometry('SOHAM CHAVAN', {
             font,
-            size: 2.0,
-            height: 0.4,
+			size: 0.9,
+			height: 0.12,
             curveSegments: 16,
             bevelEnabled: true,
-            bevelThickness: 0.08,
-            bevelSize: 0.05,
+			bevelThickness: 0.035,
+			bevelSize: 0.02,
             bevelOffset: 0,
             bevelSegments: 4
         })
@@ -213,13 +213,9 @@ export default class IntroSection
         }
         const textMesh = new THREE.Mesh(textGeometry, material)
 
-        // Position higher above ground to ensure visibility and avoid being covered by other objects
-        // Also position slightly forward to ensure it's not behind other objects
-        // Position at a good height for visibility from the camera
-        // Also position slightly forward to ensure it's not behind other objects
-        textMesh.position.set(this.x + 0, this.y + 0, 3.5)
-        // Keep flat on ground (Z is up in this scene) and no in-plane rotation so it's perfectly horizontal
-        textMesh.rotation.set(0, 0, 0)
+		// Center the text in the intro area
+		textMesh.position.set(this.x + 0, this.y + 0, 1.0)
+		textMesh.rotation.set(Math.PI * 0.5, 0, 0)
         textMesh.castShadow = true
         textMesh.receiveShadow = true
         
@@ -229,7 +225,7 @@ export default class IntroSection
         
         // Make text more prominent and ensure it's not clipped
         textMesh.frustumCulled = false
-        textMesh.material.side = THREE.FrontSide
+		textMesh.material.side = THREE.DoubleSide
         
         // Add some debugging to ensure text is visible
         if (this.debug) {
