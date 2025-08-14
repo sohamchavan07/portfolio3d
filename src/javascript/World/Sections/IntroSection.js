@@ -168,33 +168,81 @@ export default class IntroSection
 
         const textGeometry = new TextGeometry('SOHAM CHAVAN', {
             font,
-            size: 1.2,
-            height: 0.25,
-            curveSegments: 8,
+            size: 2.0,
+            height: 0.4,
+            curveSegments: 16,
             bevelEnabled: true,
-            bevelThickness: 0.03,
-            bevelSize: 0.02,
+            bevelThickness: 0.08,
+            bevelSize: 0.05,
             bevelOffset: 0,
-            bevelSegments: 2
+            bevelSegments: 4
         })
         textGeometry.computeBoundingBox()
         if (textGeometry.boundingBox) {
             const centerX = (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x) * 0.5
             const centerY = (textGeometry.boundingBox.max.y - textGeometry.boundingBox.min.y) * 0.5
             textGeometry.translate(-centerX, -centerY, 0)
+            
+            // Add some debugging for text dimensions
+            if (this.debug) {
+                console.log('Text bounding box:', textGeometry.boundingBox)
+                console.log('Text dimensions:', {
+                    width: textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x,
+                    height: textGeometry.boundingBox.max.y - textGeometry.boundingBox.min.y,
+                    depth: textGeometry.boundingBox.max.z - textGeometry.boundingBox.min.z
+                })
+            }
         }
 
-        const material = new THREE.MeshMatcapMaterial({ matcap: this.resources.items.matcapBeigeTexture })
+        // Create material with fallback to ensure visibility
+        let material
+        if (this.resources.items.matcapBeigeTexture) {
+            material = new THREE.MeshMatcapMaterial({ 
+                matcap: this.resources.items.matcapBeigeTexture,
+                transparent: false,
+                depthTest: true,
+                depthWrite: true
+            })
+        } else {
+            // Fallback material if matcap texture isn't available
+            material = new THREE.MeshPhongMaterial({ 
+                color: 0x8B4513, // Brown color
+                shininess: 100,
+                specular: 0x444444
+            })
+        }
         const textMesh = new THREE.Mesh(textGeometry, material)
 
-        // Position slightly above ground and orient like other intro elements
-        textMesh.position.set(this.x + 0, this.y + 0, 0.2)
+        // Position higher above ground to ensure visibility and avoid being covered by other objects
+        // Also position slightly forward to ensure it's not behind other objects
+        // Position at a good height for visibility from the camera
+        // Also position slightly forward to ensure it's not behind other objects
+        textMesh.position.set(this.x + 0, this.y + 0, 3.5)
         // Keep flat on ground (Z is up in this scene) and no in-plane rotation so it's perfectly horizontal
         textMesh.rotation.set(0, 0, 0)
         textMesh.castShadow = true
         textMesh.receiveShadow = true
+        
+        // Ensure the text is always visible by setting render order and material properties
+        textMesh.renderOrder = 999
+        textMesh.material.needsUpdate = true
+        
+        // Make text more prominent and ensure it's not clipped
+        textMesh.frustumCulled = false
+        textMesh.material.side = THREE.FrontSide
+        
+        // Add some debugging to ensure text is visible
+        if (this.debug) {
+            console.log('Text mesh created:', textMesh)
+            console.log('Text position:', textMesh.position)
+            console.log('Text material:', textMesh.material)
+        }
 
         this.container.add(textMesh)
+        
+        // Ensure the text is properly positioned in the scene hierarchy
+        textMesh.updateMatrix()
+        textMesh.updateMatrixWorld(true)
     }
 
     setTiles()
