@@ -116,6 +116,29 @@ export default class ProjectsSection
                 }
             },
 
+            {
+                name: 'Luni',
+                imageSources:
+                [
+                    './models/projects/luni/slideA.webp',
+                    './models/projects/luni/slideB.webp',
+                    './models/projects/luni/slideC.webp',
+                    './models/projects/luni/slideD.webp'
+                ],
+                floorTexture: this.resources.items.projectsLuniFloorTexture,
+                link:
+                {
+                    href: 'https://porsche-casestudy.vercel.app',
+                    x: - 4.8,
+                    y: - 1,
+                    halfExtents:
+                    {
+                        x: 3.2,
+                        y: 1.5
+                    }
+                }
+            },
+
             // {
             //     name: 'Zenly',
             //     imageSources:
