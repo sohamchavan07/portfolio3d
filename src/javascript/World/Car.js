@@ -112,6 +112,16 @@ export default class Car
         this.chassis.oldPosition = this.chassis.object.position.clone()
         this.container.add(this.chassis.object)
 
+        // Override chassis color to blue
+        const chassisMaterial = this.materials.shades.items.blue
+        for(const _child of this.chassis.object.children)
+        {
+            if(_child instanceof THREE.Mesh)
+            {
+                _child.material = chassisMaterial
+            }
+        }
+
         this.shadows.add(this.chassis.object, { sizeX: 3, sizeY: 2, offsetZ: 0.2 })
 
         // Time tick
@@ -240,6 +250,19 @@ export default class Car
     {
         this.wheels = {}
         this.wheels.object = this.objects.getConvertedMesh(this.models.wheel.scene.children)
+        // Override wheels color to black
+        const wheelMaterial = this.materials.shades.items.black
+        if(this.wheels.object.material)
+        {
+            this.wheels.object.material = wheelMaterial
+        }
+        for(const _child of this.wheels.object.children)
+        {
+            if(_child instanceof THREE.Mesh)
+            {
+                _child.material = wheelMaterial
+            }
+        }
         this.wheels.items = []
 
         for(let i = 0; i < 4; i++)
