@@ -85,14 +85,6 @@ export default class Controls extends EventEmitter
                     this.actions.boost = true
                     break
 
-                case 'KeyB':
-                    this.trigger('action', ['switchToBike'])
-                    break
-
-                case 'KeyC':
-                    this.trigger('action', ['switchToCar'])
-                    break
-
                 // case ' ':
                 //     this.jump(true)
                 //     break

@@ -42,69 +42,12 @@ export default class Car
         this.setKlaxon()
     }
 
-    addSuperBikeFeatures()
-    {
-        // Add racing stripes on the chassis
-        const stripeGeometry = new THREE.BoxGeometry(0.8, 0.05, 0.1)
-        const stripeMaterial = this.materials.shades.items.red
-        
-        // Front racing stripe
-        const frontStripe = new THREE.Mesh(stripeGeometry, stripeMaterial)
-        frontStripe.position.set(0.3, 0, 0.2)
-        this.chassis.object.add(frontStripe)
-        
-        // Rear racing stripe
-        const rearStripe = new THREE.Mesh(stripeGeometry, stripeMaterial)
-        rearStripe.position.set(-0.3, 0, 0.2)
-        this.chassis.object.add(rearStripe)
-        
-        // Add side racing accents
-        const accentGeometry = new THREE.BoxGeometry(0.1, 0.3, 0.05)
-        const accentMaterial = this.materials.shades.items.yellow
-        
-        // Left side accent
-        const leftAccent = new THREE.Mesh(accentGeometry, accentMaterial)
-        leftAccent.position.set(0, 0.4, 0.15)
-        this.chassis.object.add(leftAccent)
-        
-        // Right side accent
-        const rightAccent = new THREE.Mesh(accentGeometry, accentMaterial)
-        rightAccent.position.set(0, -0.4, 0.15)
-        this.chassis.object.add(rightAccent)
-        
-        // Add exhaust pipes (small cylinders)
-        const exhaustGeometry = new THREE.CylinderGeometry(0.03, 0.03, 0.4, 8)
-        const exhaustMaterial = this.materials.shades.items.metal
-        
-        // Left exhaust
-        const leftExhaust = new THREE.Mesh(exhaustGeometry, exhaustMaterial)
-        leftExhaust.position.set(-0.2, 0.3, -0.1)
-        leftExhaust.rotation.z = Math.PI / 2
-        this.chassis.object.add(leftExhaust)
-        
-        // Right exhaust
-        const rightExhaust = new THREE.Mesh(exhaustGeometry, exhaustMaterial)
-        rightExhaust.position.set(-0.2, -0.3, -0.1)
-        rightExhaust.rotation.z = Math.PI / 2
-        this.chassis.object.add(rightExhaust)
-    }
-
     setModels()
     {
         this.models = {}
 
-        // Bike
-        if(this.config.bike)
-        {
-            this.models.chassis = this.resources.items.carBikeChassis
-            this.models.antena = this.resources.items.carBikeAntena
-            this.models.wheel = this.resources.items.carBikeWheel
-            // Bikes don't have back lights
-            this.models.backLightsBrake = null
-            this.models.backLightsReverse = null
-        }
         // Cyber truck
-        else if(this.config.cyberTruck)
+        if(this.config.cyberTruck)
         {
             this.models.chassis = this.resources.items.carCyberTruckChassis
             this.models.antena = this.resources.items.carCyberTruckAntena
@@ -169,19 +112,8 @@ export default class Car
         this.chassis.oldPosition = this.chassis.object.position.clone()
         this.container.add(this.chassis.object)
 
-        // Override chassis color for super bike look
-        let chassisMaterial
-        if(this.config.bike)
-        {
-            // Super bike: Use metallic material for sleek racing look
-            chassisMaterial = this.materials.shades.items.metal
-        }
-        else
-        {
-            // Default car: Use blue
-            chassisMaterial = this.materials.shades.items.blue
-        }
-        
+        // Override chassis color to blue
+        const chassisMaterial = this.materials.shades.items.blue
         for(const _child of this.chassis.object.children)
         {
             if(_child instanceof THREE.Mesh)
@@ -191,12 +123,6 @@ export default class Car
         }
 
         this.shadows.add(this.chassis.object, { sizeX: 3, sizeY: 2, offsetZ: 0.2 })
-        
-        // Super bike: Add racing stripes and accents
-        if(this.config.bike)
-        {
-            this.addSuperBikeFeatures()
-        }
 
         // Time tick
         this.time.on('tick', () =>
@@ -226,20 +152,6 @@ export default class Car
 
         this.antena.object = this.objects.getConvertedMesh(this.models.antena.scene.children)
         this.chassis.object.add(this.antena.object)
-        
-        // Super bike: Make antenna look more like a racing element
-        if(this.config.bike)
-        {
-            // Use red material for racing antenna
-            const antennaMaterial = this.materials.shades.items.red
-            for(const _child of this.antena.object.children)
-            {
-                if(_child instanceof THREE.Mesh)
-                {
-                    _child.material = antennaMaterial
-                }
-            }
-        }
 
         // this.antena.bunnyEarLeft = this.objects.getConvertedMesh(this.models.bunnyEarLeft.scene.children)
         // this.chassis.object.add(this.antena.bunnyEarLeft)
@@ -297,53 +209,40 @@ export default class Car
 
     setBackLights()
     {
-        // Only set up back lights if the vehicle has them (not for bikes)
-        if(this.models.backLightsBrake && this.models.backLightsReverse)
+        this.backLightsBrake = {}
+
+        this.backLightsBrake.material = this.materials.pures.items.red.clone()
+        this.backLightsBrake.material.transparent = true
+        this.backLightsBrake.material.opacity = 0.5
+
+        this.backLightsBrake.object = this.objects.getConvertedMesh(this.models.backLightsBrake.scene.children)
+        for(const _child of this.backLightsBrake.object.children)
         {
-            this.backLightsBrake = {}
-
-            this.backLightsBrake.material = this.materials.pures.items.red.clone()
-            this.backLightsBrake.material.transparent = true
-            this.backLightsBrake.material.opacity = 0.5
-
-            this.backLightsBrake.object = this.objects.getConvertedMesh(this.models.backLightsBrake.scene.children)
-            for(const _child of this.backLightsBrake.object.children)
-            {
-                _child.material = this.backLightsBrake.material
-            }
-
-            this.chassis.object.add(this.backLightsBrake.object)
-
-            // Back lights brake
-            this.backLightsReverse = {}
-
-            this.backLightsReverse.material = this.materials.pures.items.yellow.clone()
-            this.backLightsReverse.material.transparent = true
-            this.backLightsReverse.material.opacity = 0.5
-
-            this.backLightsReverse.object = this.objects.getConvertedMesh(this.models.backLightsReverse.scene.children)
-            for(const _child of this.backLightsReverse.object.children)
-            {
-                _child.material = this.backLightsReverse.material
-            }
-
-            this.chassis.object.add(this.backLightsReverse.object)
+            _child.material = this.backLightsBrake.material
         }
-        else
+
+        this.chassis.object.add(this.backLightsBrake.object)
+
+        // Back lights brake
+        this.backLightsReverse = {}
+
+        this.backLightsReverse.material = this.materials.pures.items.yellow.clone()
+        this.backLightsReverse.material.transparent = true
+        this.backLightsReverse.material.opacity = 0.5
+
+        this.backLightsReverse.object = this.objects.getConvertedMesh(this.models.backLightsReverse.scene.children)
+        for(const _child of this.backLightsReverse.object.children)
         {
-            // For bikes, set null references
-            this.backLightsBrake = null
-            this.backLightsReverse = null
+            _child.material = this.backLightsReverse.material
         }
+
+        this.chassis.object.add(this.backLightsReverse.object)
 
         // Time tick
         this.time.on('tick', () =>
         {
-            if(this.backLightsBrake && this.backLightsReverse)
-            {
-                this.backLightsBrake.material.opacity = this.physics.controls.actions.brake ? 1 : 0.5
-                this.backLightsReverse.material.opacity = this.physics.controls.actions.down ? 1 : 0.5
-            }
+            this.backLightsBrake.material.opacity = this.physics.controls.actions.brake ? 1 : 0.5
+            this.backLightsReverse.material.opacity = this.physics.controls.actions.down ? 1 : 0.5
         })
     }
 
@@ -351,19 +250,8 @@ export default class Car
     {
         this.wheels = {}
         this.wheels.object = this.objects.getConvertedMesh(this.models.wheel.scene.children)
-        // Override wheels color for super bike look
-        let wheelMaterial
-        if(this.config.bike)
-        {
-            // Super bike: Use metallic material for premium racing wheels
-            wheelMaterial = this.materials.shades.items.metal
-        }
-        else
-        {
-            // Default: Use black
-            wheelMaterial = this.materials.shades.items.black
-        }
-        
+        // Override wheels color to black
+        const wheelMaterial = this.materials.shades.items.black
         if(this.wheels.object.material)
         {
             this.wheels.object.material = wheelMaterial

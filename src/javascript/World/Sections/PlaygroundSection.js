@@ -32,7 +32,6 @@ export default class PlaygroundSection
         this.setStatic()
         this.setBricksWalls()
         this.setBowling()
-        this.setVehicleSwitcher()
     }
 
     setStatic()
@@ -225,54 +224,6 @@ export default class PlaygroundSection
         if(this.debugFolder)
         {
             this.debugFolder.add(this.bowling, 'reset').name('bowling reset')
-        }
-    }
-
-    setVehicleSwitcher()
-    {
-        this.vehicleSwitcher = {}
-        this.vehicleSwitcher.x = this.x + 15
-        this.vehicleSwitcher.y = this.y - 10
-
-        // Create instruction text geometry
-        const canvas = document.createElement('canvas')
-        const context = canvas.getContext('2d')
-        canvas.width = 512
-        canvas.height = 128
-        
-        context.fillStyle = 'rgba(0, 0, 0, 0.8)'
-        context.fillRect(0, 0, canvas.width, canvas.height)
-        
-        context.fillStyle = 'white'
-        context.font = '24px Arial'
-        context.textAlign = 'center'
-        context.fillText('Press B for Bike, C for Car', canvas.width / 2, 40)
-        context.fillText('Switch vehicles anytime!', canvas.width / 2, 80)
-
-        const texture = new THREE.CanvasTexture(canvas)
-        texture.needsUpdate = true
-
-        // Create instruction mesh
-        this.vehicleSwitcher.instructionMesh = new THREE.Mesh(
-            new THREE.PlaneGeometry(4, 1),
-            new THREE.MeshBasicMaterial({ 
-                map: texture, 
-                transparent: true, 
-                depthWrite: false 
-            })
-        )
-        this.vehicleSwitcher.instructionMesh.position.x = this.vehicleSwitcher.x
-        this.vehicleSwitcher.instructionMesh.position.y = this.vehicleSwitcher.y
-        this.vehicleSwitcher.instructionMesh.position.z = 0.1
-        this.vehicleSwitcher.instructionMesh.matrixAutoUpdate = false
-        this.vehicleSwitcher.instructionMesh.updateMatrix()
-        this.container.add(this.vehicleSwitcher.instructionMesh)
-
-        // Debug
-        if(this.debugFolder)
-        {
-            this.debugFolder.add(this.vehicleSwitcher, 'x').step(0.1).min(-50).max(50)
-            this.debugFolder.add(this.vehicleSwitcher, 'y').step(0.1).min(-50).max(50)
         }
     }
 }
