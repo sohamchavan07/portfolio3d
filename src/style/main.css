@@ -53,6 +53,36 @@ html
     user-select: none;
 }
 
+/* Bottom-left dialog */
+.bottom-left-dialog
+{
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    max-width: 360px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    font-family: 'Comic Neue', cursive;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.35;
+    z-index: 10;
+}
+
+.bottom-left-dialog .dialog-text + .dialog-text
+{
+    margin-top: 6px;
+}
+
+.bottom-left-dialog a
+{
+    color: #ffd39b;
+    text-decoration: underline;
+}
+
 .threejs-journey.is-active
 {
     display: flex;
