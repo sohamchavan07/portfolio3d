@@ -118,35 +118,74 @@ export default class Physics
          * Options
          */
         this.car.options = {}
-        this.car.options.chassisWidth = 1.02
-        this.car.options.chassisHeight = 1.16
-        this.car.options.chassisDepth = 2.03
-        this.car.options.chassisOffset = new CANNON.Vec3(0, 0, 0.41)
-        this.car.options.chassisMass = 40
-        this.car.options.wheelFrontOffsetDepth = 0.635
-        this.car.options.wheelBackOffsetDepth = - 0.475
-        this.car.options.wheelOffsetWidth = 0.39
-        this.car.options.wheelRadius = 0.25
-        this.car.options.wheelHeight = 0.24
-        this.car.options.wheelSuspensionStiffness = 50
-        this.car.options.wheelSuspensionRestLength = 0.1
-        this.car.options.wheelFrictionSlip = 10
-        this.car.options.wheelDampingRelaxation = 1.8
-        this.car.options.wheelDampingCompression = 1.5
-        this.car.options.wheelMaxSuspensionForce = 100000
-        this.car.options.wheelRollInfluence =  0.01
-        this.car.options.wheelMaxSuspensionTravel = 0.3
-        this.car.options.wheelCustomSlidingRotationalSpeed = - 30
-        this.car.options.wheelMass = 5
-        this.car.options.controlsSteeringSpeed = 0.005 * 3
-        this.car.options.controlsSteeringMax = Math.PI * 0.17
-        this.car.options.controlsSteeringQuad = false
-        this.car.options.controlsAcceleratinMaxSpeed = 0.055 * 3 / 17
-        this.car.options.controlsAcceleratinMaxSpeedBoost = 0.11 * 3 / 17
-        this.car.options.controlsAcceleratingSpeed = 2 * 4 * 2
-        this.car.options.controlsAcceleratingSpeedBoost = 3.5 * 4 * 2
-        this.car.options.controlsAcceleratingQuad = true
-        this.car.options.controlsBrakeStrength = 0.45 * 3
+        
+        // Set different physics based on vehicle type
+        if(this.config.bike)
+        {
+            // Bike physics - lighter, more agile
+            this.car.options.chassisWidth = 0.6
+            this.car.options.chassisHeight = 1.0
+            this.car.options.chassisDepth = 1.8
+            this.car.options.chassisOffset = new CANNON.Vec3(0, 0, 0.3)
+            this.car.options.chassisMass = 20
+            this.car.options.wheelFrontOffsetDepth = 0.5
+            this.car.options.wheelBackOffsetDepth = - 0.4
+            this.car.options.wheelOffsetWidth = 0.0 // Single wheel track for bike
+            this.car.options.wheelRadius = 0.3
+            this.car.options.wheelHeight = 0.2
+            this.car.options.wheelSuspensionStiffness = 30
+            this.car.options.wheelSuspensionRestLength = 0.1
+            this.car.options.wheelFrictionSlip = 8
+            this.car.options.wheelDampingRelaxation = 1.5
+            this.car.options.wheelDampingCompression = 1.2
+            this.car.options.wheelMaxSuspensionForce = 50000
+            this.car.options.wheelRollInfluence = 0.02
+            this.car.options.wheelMaxSuspensionTravel = 0.2
+            this.car.options.wheelCustomSlidingRotationalSpeed = - 25
+            this.car.options.wheelMass = 3
+            this.car.options.controlsSteeringSpeed = 0.008 * 3 // More responsive steering
+            this.car.options.controlsSteeringMax = Math.PI * 0.25 // More steering angle
+            this.car.options.controlsSteeringQuad = false
+            this.car.options.controlsAcceleratinMaxSpeed = 0.08 * 3 / 17 // Faster acceleration
+            this.car.options.controlsAcceleratinMaxSpeedBoost = 0.15 * 3 / 17
+            this.car.options.controlsAcceleratingSpeed = 2.5 * 4 * 2
+            this.car.options.controlsAcceleratingSpeedBoost = 4 * 4 * 2
+            this.car.options.controlsAcceleratingQuad = true
+            this.car.options.controlsBrakeStrength = 0.6 * 3 // Better braking
+        }
+        else
+        {
+            // Car physics (default)
+            this.car.options.chassisWidth = 1.02
+            this.car.options.chassisHeight = 1.16
+            this.car.options.chassisDepth = 2.03
+            this.car.options.chassisOffset = new CANNON.Vec3(0, 0, 0.41)
+            this.car.options.chassisMass = 40
+            this.car.options.wheelFrontOffsetDepth = 0.635
+            this.car.options.wheelBackOffsetDepth = - 0.475
+            this.car.options.wheelOffsetWidth = 0.39
+            this.car.options.wheelRadius = 0.25
+            this.car.options.wheelHeight = 0.24
+            this.car.options.wheelSuspensionStiffness = 50
+            this.car.options.wheelSuspensionRestLength = 0.1
+            this.car.options.wheelFrictionSlip = 10
+            this.car.options.wheelDampingRelaxation = 1.8
+            this.car.options.wheelDampingCompression = 1.5
+            this.car.options.wheelMaxSuspensionForce = 100000
+            this.car.options.wheelRollInfluence =  0.01
+            this.car.options.wheelMaxSuspensionTravel = 0.3
+            this.car.options.wheelCustomSlidingRotationalSpeed = - 30
+            this.car.options.wheelMass = 5
+            this.car.options.controlsSteeringSpeed = 0.005 * 3
+            this.car.options.controlsSteeringMax = Math.PI * 0.17
+            this.car.options.controlsSteeringQuad = false
+            this.car.options.controlsAcceleratinMaxSpeed = 0.055 * 3 / 17
+            this.car.options.controlsAcceleratinMaxSpeedBoost = 0.11 * 3 / 17
+            this.car.options.controlsAcceleratingSpeed = 2 * 4 * 2
+            this.car.options.controlsAcceleratingSpeedBoost = 3.5 * 4 * 2
+            this.car.options.controlsAcceleratingQuad = true
+            this.car.options.controlsBrakeStrength = 0.45 * 3
+        }
 
         /**
          * Upsize down

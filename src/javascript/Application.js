@@ -48,6 +48,7 @@ export default class Application
         this.config.debug = window.location.hash === '#debug'
         // Enable alternate vehicle by default; still allow hash to control explicitly
         this.config.cyberTruck = true || window.location.hash === '#cybertruck' || window.location.hash === '#train'
+        this.config.bike = window.location.hash === '#bike'
         this.config.touch = false
 
         window.addEventListener('touchstart', () =>

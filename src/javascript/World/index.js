@@ -395,6 +395,62 @@ export default class World
             config: this.config
         })
         this.container.add(this.car.container)
+
+        // Listen for vehicle switching controls
+        this.controls.on('action', (action) => {
+            if(action === 'switchToBike') {
+                this.switchVehicle('bike')
+            } else if(action === 'switchToCar') {
+                this.switchVehicle('car')
+            }
+        })
+    }
+
+    switchVehicle(vehicleType)
+    {
+        // Store current position and rotation for continuity
+        const currentPosition = this.car.chassis.object.position.clone()
+        const currentRotation = this.car.chassis.object.quaternion.clone()
+        
+        // Remove current car
+        this.container.remove(this.car.container)
+        
+        // Update config
+        if(vehicleType === 'bike') {
+            this.config.bike = true
+            this.config.cyberTruck = false
+        } else if(vehicleType === 'car') {
+            this.config.bike = false
+            this.config.cyberTruck = true
+        }
+
+        // Recreate physics with new vehicle configuration
+        this.physics.setCar()
+        this.physics.car.recreate()
+
+        // Create new car with updated config
+        this.car = new Car({
+            time: this.time,
+            resources: this.resources,
+            objects: this.objects,
+            physics: this.physics,
+            shadows: this.shadows,
+            materials: this.materials,
+            controls: this.controls,
+            sounds: this.sounds,
+            renderer: this.renderer,
+            camera: this.camera,
+            debug: this.debugFolder,
+            config: this.config
+        })
+        
+        // Restore position and rotation
+        this.car.chassis.object.position.copy(currentPosition)
+        this.car.chassis.object.quaternion.copy(currentRotation)
+        this.physics.car.chassis.body.position.copy(currentPosition)
+        this.physics.car.chassis.body.quaternion.copy(currentRotation)
+        
+        this.container.add(this.car.container)
     }
 
     setSections()
