@@ -105,7 +105,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsBonhomme10ansFloorTexture,
                 link:
                 {
-                    href: 'https://sohamchavan07.github.io/Portfolio/',
+                    href: 'https://portfolio-sohamchavan07.vercel.app',
                     x: - 4.8,
                     y: - 2,
                     halfExtents:
