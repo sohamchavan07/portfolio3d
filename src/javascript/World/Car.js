@@ -37,10 +37,6 @@ export default class Car
         this.setAntena()
         this.setBackLights()
         this.setWheels()
-        this.setSpoiler()
-        this.setHeadlights()
-        this.setSideMirrors()
-        this.setExhaust()
         this.setTransformControls()
         this.setShootingBall()
         this.setKlaxon()
@@ -114,15 +110,7 @@ export default class Car
         this.chassis.oldPosition = this.chassis.object.position.clone()
         this.container.add(this.chassis.object)
 
-        // Revert chassis color to previous blue
-        const chassisMaterial = this.materials.shades.items.blue
-        for(const _child of this.chassis.object.children)
-        {
-            if(_child instanceof THREE.Mesh && !_child.name.includes('glass') && !_child.name.includes('light'))
-            {
-                _child.material = chassisMaterial
-            }
-        }
+        // Keep original chassis materials (no override)
 
         this.shadows.add(this.chassis.object, { sizeX: 3, sizeY: 2, offsetZ: 0.2 })
 
