@@ -639,6 +639,35 @@ export default class Controls extends EventEmitter
 
         this.touch.backward.$element.addEventListener('touchstart', this.touch.backward.events.touchstart)
 
+        // Responsive layout to avoid overlaps (e.g., chat/dialog on mobile)
+        this.touch.safeBottom = 15
+        this.touch.setLayout = () =>
+        {
+            const isSmallScreen = window.innerWidth <= 768
+            const extraBottom = isSmallScreen ? 120 : 0
+            const base = this.touch.safeBottom + extraBottom
+
+            // Left joystick
+            this.touch.joystick.$element.style.left = '10px'
+            this.touch.joystick.$element.style.bottom = `${base}px`
+
+            // Right-side stack (backward, brake, forward, boost)
+            const gap = 15
+            const h = 70
+            this.touch.backward.$element.style.right = '0px'
+            this.touch.backward.$element.style.bottom = `${this.touch.safeBottom}px`
+            this.touch.brake.$element.style.right = '0px'
+            this.touch.brake.$element.style.bottom = `${this.touch.safeBottom + h + gap}px`
+            this.touch.forward.$element.style.right = '0px'
+            this.touch.forward.$element.style.bottom = `${this.touch.safeBottom + h * 2 + gap}px`
+            this.touch.boost.$element.style.right = '0px'
+            this.touch.boost.$element.style.bottom = `${this.touch.safeBottom + h * 3 + gap}px`
+        }
+
+        // Apply now and on resize
+        this.touch.setLayout()
+        this.sizes.on('resize', this.touch.setLayout)
+
         // Reveal
         this.touch.reveal = () =>
         {
