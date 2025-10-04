@@ -82,7 +82,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsThreejsJourneyFloorTexture,
                 link:
                 {
-                    href: 'https://ballgame-jade.vercel.app/',
+                    href: 'https://portfolio-sohamchavan07.vercel.app',
                     x: - 4.8,
                     y: - 3,
                     halfExtents:
@@ -105,7 +105,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsBonhomme10ansFloorTexture,
                 link:
                 {
-                    href: 'https://portfolio-sohamchavan07.vercel.app',
+                    href: 'https://porsche-casestudy.vercel.app',
                     x: - 4.8,
                     y: - 2,
                     halfExtents:
@@ -128,7 +128,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsLuniFloorTexture,
                 link:
                 {
-                    href: 'https://porsche-casestudy.vercel.app',
+                    href: 'https://lamborghini-case-study.vercel.app',
                     x: - 4.8,
                     y: - 1,
                     halfExtents:
