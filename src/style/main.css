@@ -296,3 +296,21 @@ html
     transform-origin: 100% 0;
     opacity: 0.2;
 }
+
+/* Responsive styles for .bottom-left-dialog */
+@media (max-width: 600px) {
+  .bottom-left-dialog {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    max-width: 75vw;
+    width: auto;
+    padding: 8px 8px;
+    font-size: 13px;
+    border-radius: 6px;
+  }
+  .bottom-left-dialog .dialog-text {
+    word-break: break-word;
+    font-size: 13px;
+  }
+}
