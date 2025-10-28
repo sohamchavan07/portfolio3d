@@ -117,6 +117,28 @@ export default class ProjectsSection
             },
 
             {
+                name: 'Madbox',
+                imageSources:
+                [
+                    './models/projects/madbox/slideA.jpg',
+                    './models/projects/madbox/slideB.jpg',
+                    './models/projects/madbox/slideC.jpg'
+                ],
+                floorTexture: this.resources.items.projectsMadboxFloorTexture,
+                link:
+                {
+                    href: 'https://tawade-kitchen.vercel.app',
+                    x: - 4.8,
+                    y: - 2.6,
+                    halfExtents:
+                    {
+                        x: 3.2,
+                        y: 1.5
+                    }
+                }
+            },
+
+            {
                 name: 'Luni',
                 imageSources:
                 [
