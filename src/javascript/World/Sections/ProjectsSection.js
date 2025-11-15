@@ -161,6 +161,29 @@ export default class ProjectsSection
                 }
             },
 
+            {
+                name: 'Ferrari',
+                imageSources:
+                [
+                    './models/projects/ferrari/slideA.webp',
+                    './models/projects/ferrari/slideB.webp',
+                    './models/projects/ferrari/slideC.webp',
+                    './models/projects/ferrari/slideD.webp'
+                ],
+                floorTexture: this.resources.items.projectsFerrariFloorTexture,
+                link:
+                {
+                    href: 'https://ferrari-casestudy.vercel.app',
+                    x: - 4.8,
+                    y: - 0.5,
+                    halfExtents:
+                    {
+                        x: 3.2,
+                        y: 1.5
+                    }
+                }
+            },
+
             // {
             //     name: 'Zenly',
             //     imageSources:

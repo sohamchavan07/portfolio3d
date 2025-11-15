@@ -105,6 +105,7 @@ export default class Resources extends EventEmitter
             { name: 'projectsThreejsJourneyFloor', source: './models/projects/threejsJourney/floorTexture.webp', type: 'texture' },
             { name: 'projectsLuniFloor', source: './models/projects/luni/floorTexture.webp', type: 'texture' },
             { name: 'projectsMadboxFloor', source: './models/projects/madbox/floorTexture.png', type: 'texture' },
+            { name: 'projectsFerrariFloor', source: './models/projects/ferrari/floorTexture.webp', type: 'texture' },
 
             // { name: 'projectsZenlyFloor', source: './models/projects/zenly/floorTexture.png', type: 'texture' },
 
