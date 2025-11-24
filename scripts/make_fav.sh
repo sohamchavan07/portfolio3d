@@ -8,7 +8,11 @@ set -euo pipefail
 
 SRC=${1:-"$HOME/Downloads/fav.png"}
 
-DEST_DIRS=("/home/soham/soham_workspace/portfolio3d/static/favicon" "/home/soham/soham_workspace/portfolio3d/src/favicon")
+# Resolve project root relative to this script so it works on any machine.
+SCRIPT_DIR="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd -- "$SCRIPT_DIR/.." && pwd)"
+
+DEST_DIRS=("$ROOT_DIR/static/favicon" "$ROOT_DIR/src/favicon")
 
 if [ ! -f "$SRC" ]; then
   echo "Source file not found: $SRC"

@@ -82,7 +82,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsThreejsJourneyFloorTexture,
                 link:
                 {
-                    href: 'https://portfolio-sohamchavan07.vercel.app',
+                    href: 'https://www.sohamchavan.site',
                     x: - 4.8,
                     y: - 3,
                     halfExtents:
@@ -122,7 +122,9 @@ export default class ProjectsSection
                 [
                     './models/projects/madbox/slideA.jpg',
                     './models/projects/madbox/slideB.jpg',
-                    './models/projects/madbox/slideC.jpg'
+                    './models/projects/madbox/slideC.jpg',
+                    './models/projects/madbox/slideD.jpg'
+
                 ],
                 floorTexture: this.resources.items.projectsMadboxFloorTexture,
                 link:
