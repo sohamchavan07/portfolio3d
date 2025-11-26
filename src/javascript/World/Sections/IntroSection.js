@@ -166,35 +166,79 @@ export default class IntroSection
         const fontLoader = new FontLoader()
         const font = fontLoader.parse(helvetiker)
 
-        const textGeometry = new TextGeometry('SOHAM CHAVAN', {
+		const textGeometry = new TextGeometry('SOHAM    CHAVAN', {
             font,
-            size: 1.2,
-            height: 0.25,
-            curveSegments: 8,
+			size: 0.9,
+			height: 0.12,
+            curveSegments: 16,
             bevelEnabled: true,
-            bevelThickness: 0.03,
-            bevelSize: 0.02,
+			bevelThickness: 0.035,
+			bevelSize: 0.02,
             bevelOffset: 0,
-            bevelSegments: 2
+            bevelSegments: 4
         })
         textGeometry.computeBoundingBox()
         if (textGeometry.boundingBox) {
-            const centerX = (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x) * 0.5
+            const centerX = (textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x) * 0.8
             const centerY = (textGeometry.boundingBox.max.y - textGeometry.boundingBox.min.y) * 0.5
             textGeometry.translate(-centerX, -centerY, 0)
+            
+            // Add some debugging for text dimensions
+            if (this.debug) {
+                console.log('Text bounding box:', textGeometry.boundingBox)
+                console.log('Text dimensions:', {
+                    width: textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x,
+                    height: textGeometry.boundingBox.max.y - textGeometry.boundingBox.min.y,
+                    depth: textGeometry.boundingBox.max.z - textGeometry.boundingBox.min.z
+                })
+            }
         }
 
-        const material = new THREE.MeshMatcapMaterial({ matcap: this.resources.items.matcapBeigeTexture })
+        // Create material with fallback to ensure visibility
+        let material
+        if (this.resources.items.matcapBeigeTexture) {
+            material = new THREE.MeshMatcapMaterial({ 
+                matcap: this.resources.items.matcapBeigeTexture,
+                transparent: false,
+                depthTest: true,
+                depthWrite: true
+            })
+        } else {
+            // Fallback material if matcap texture isn't available
+            material = new THREE.MeshPhongMaterial({ 
+                color: 0x8B4513, // Brown color
+                shininess: 100,
+                specular: 0x444444
+            })
+        }
         const textMesh = new THREE.Mesh(textGeometry, material)
 
-        // Position slightly above ground and orient like other intro elements
-        textMesh.position.set(this.x + 0, this.y + 0, 0.2)
-        // Keep flat on ground (Z is up in this scene) and no in-plane rotation so it's perfectly horizontal
-        textMesh.rotation.set(0, 0, 0)
+		// Center the text in the intro area and move one step forward (positive Y)
+		textMesh.position.set(this.x + 2.5, this.y + - 9)
+		textMesh.rotation.set(Math.PI * 0.5, 0, 0)
         textMesh.castShadow = true
         textMesh.receiveShadow = true
+        
+        // Ensure the text is always visible by setting render order and material properties
+        textMesh.renderOrder = 999
+        textMesh.material.needsUpdate = true
+        
+        // Make text more prominent and ensure it's not clipped
+        textMesh.frustumCulled = false
+		textMesh.material.side = THREE.DoubleSide
+        
+        // Add some debugging to ensure text is visible
+        if (this.debug) {
+            console.log('Text mesh created:', textMesh)
+            console.log('Text position:', textMesh.position)
+            console.log('Text material:', textMesh.material)
+        }
 
         this.container.add(textMesh)
+        
+        // Ensure the text is properly positioned in the scene hierarchy
+        textMesh.updateMatrix()
+        textMesh.updateMatrixWorld(true)
     }
 
     setTiles()

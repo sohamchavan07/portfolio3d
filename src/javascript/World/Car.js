@@ -56,13 +56,11 @@ export default class Car
             this.models.wheel = this.resources.items.carCyberTruckWheel
         }
 
-        // Default
+        // Default (we'll procedurally add GT3-inspired details)
         else
         {
             this.models.chassis = this.resources.items.carDefaultChassis
             this.models.antena = this.resources.items.carDefaultAntena
-            // this.models.bunnyEarLeft = this.resources.items.carDefaultBunnyEarLeft
-            // this.models.bunnyEarRight = this.resources.items.carDefaultBunnyEarRight
             this.models.backLightsBrake = this.resources.items.carDefaultBackLightsBrake
             this.models.backLightsReverse = this.resources.items.carDefaultBackLightsReverse
             this.models.wheel = this.resources.items.carDefaultWheel
@@ -112,6 +110,8 @@ export default class Car
         this.chassis.oldPosition = this.chassis.object.position.clone()
         this.container.add(this.chassis.object)
 
+        // Keep original chassis materials (no override)
+
         this.shadows.add(this.chassis.object, { sizeX: 3, sizeY: 2, offsetZ: 0.2 })
 
         // Time tick
@@ -143,12 +143,6 @@ export default class Car
         this.antena.object = this.objects.getConvertedMesh(this.models.antena.scene.children)
         this.chassis.object.add(this.antena.object)
 
-        // this.antena.bunnyEarLeft = this.objects.getConvertedMesh(this.models.bunnyEarLeft.scene.children)
-        // this.chassis.object.add(this.antena.bunnyEarLeft)
-
-        // this.antena.bunnyEarRight = this.objects.getConvertedMesh(this.models.bunnyEarRight.scene.children)
-        // this.chassis.object.add(this.antena.bunnyEarRight)
-
         this.antena.speed = new THREE.Vector2()
         this.antena.absolutePosition = new THREE.Vector2()
         this.antena.localPosition = new THREE.Vector2()
@@ -177,12 +171,6 @@ export default class Car
 
             this.antena.object.rotation.y = this.antena.localPosition.x * 0.1
             this.antena.object.rotation.x = this.antena.localPosition.y * 0.1
-
-            // this.antena.bunnyEarLeft.rotation.y = this.antena.localPosition.x * 0.1
-            // this.antena.bunnyEarLeft.rotation.x = this.antena.localPosition.y * 0.1
-
-            // this.antena.bunnyEarRight.rotation.y = this.antena.localPosition.x * 0.1
-            // this.antena.bunnyEarRight.rotation.x = this.antena.localPosition.y * 0.1
         })
 
         // Debug
@@ -213,7 +201,7 @@ export default class Car
 
         this.chassis.object.add(this.backLightsBrake.object)
 
-        // Back lights brake
+        // Back lights reverse
         this.backLightsReverse = {}
 
         this.backLightsReverse.material = this.materials.pures.items.yellow.clone()
@@ -240,6 +228,27 @@ export default class Car
     {
         this.wheels = {}
         this.wheels.object = this.objects.getConvertedMesh(this.models.wheel.scene.children)
+        // Override for GT3: silver rims, black tires
+        const rimMaterial = this.materials.shades.items.silver
+        const tireMaterial = this.materials.shades.items.black
+        if(this.wheels.object.material)
+        {
+            this.wheels.object.material = tireMaterial
+        }
+        for(const _child of this.wheels.object.children)
+        {
+            if(_child instanceof THREE.Mesh)
+            {
+                if(_child.name.includes('rim') || _child.name.includes('hub'))
+                {
+                    _child.material = rimMaterial
+                }
+                else
+                {
+                    _child.material = tireMaterial
+                }
+            }
+        }
         this.wheels.items = []
 
         for(let i = 0; i < 4; i++)
@@ -265,6 +274,189 @@ export default class Car
                 }
             }
         })
+    }
+
+    setSpoiler()
+    {
+        // Always use procedural spoiler based on chassis size (GT3-inspired)
+        this.createProceduralSpoiler()
+    }
+
+    createProceduralSpoiler()
+    {
+        // Procedural GT3-style rear wing
+        const bbox = new THREE.Box3().setFromObject(this.chassis.object)
+        const size = new THREE.Vector3()
+        bbox.getSize(size)
+
+        const wingWidth = size.y * 1.0
+        const wingDepth = Math.max(size.x * 0.12, 0.16)
+        const wingThickness = Math.max(size.z * 0.06, 0.06)
+
+        const supportWidth = wingDepth * 0.4
+        const supportDepth = wingThickness * 1.2
+        const supportHeight = Math.max(size.z * 0.28, 0.18)
+
+        const wingGeo = new THREE.BoxGeometry(wingDepth, wingWidth, wingThickness)
+        const supportGeo = new THREE.BoxGeometry(supportWidth, supportDepth, supportHeight)
+        const material = this.materials.shades.items.black
+
+        this.spoiler = {}
+        this.spoiler.object = new THREE.Object3D()
+        const wing = new THREE.Mesh(wingGeo, material)
+        const leftSupport = new THREE.Mesh(supportGeo, material)
+        const rightSupport = new THREE.Mesh(supportGeo, material)
+
+        // Arrange parts
+        wing.position.set(0, 0, 0)
+        leftSupport.position.set(wingDepth * 0.05, - wingWidth * 0.25, - supportHeight * 0.5)
+        rightSupport.position.set(wingDepth * 0.05, wingWidth * 0.25, - supportHeight * 0.5)
+
+        this.spoiler.object.add(wing)
+        this.spoiler.object.add(leftSupport)
+        this.spoiler.object.add(rightSupport)
+
+        // Position at the rear top
+        const rearZ = size.z / 2 + wingThickness * 0.5
+        this.spoiler.object.position.set(- wingDepth * 0.25, 0, rearZ)
+        this.spoiler.object.rotation.x = - Math.PI * 0.03
+
+        this.chassis.object.add(this.spoiler.object)
+        this.shadows.add(this.spoiler.object, { sizeX: wingDepth, sizeY: wingWidth, offsetZ: 0.25 })
+
+        // Dynamic deployment based on speed
+        this.time.on('tick', () =>
+        {
+            const deployAngle = Math.min(Math.max(this.movement.localSpeed.x / 50, 0), 0.2)
+            this.spoiler.object.rotation.x = - (Math.PI * 0.02 + deployAngle)
+        })
+    }
+
+    // setLogo() removed per request
+
+    setHeadlights()
+    {
+        if(this.config.cyberTruck)
+        {
+            return
+        }
+
+        // Procedural headlight capsules (small emissive spheres) near the front corners
+        this.headlights = {}
+        this.headlights.material = this.materials.pures.items.white.clone()
+        this.headlights.material.emissive = new THREE.Color(0xffffff)
+        this.headlights.material.emissiveIntensity = 0.8
+        this.headlights.material.transparent = true
+        this.headlights.material.opacity = 0.95
+
+        const bbox = new THREE.Box3().setFromObject(this.chassis.object)
+        const size = new THREE.Vector3()
+        const center = new THREE.Vector3()
+        bbox.getSize(size)
+        bbox.getCenter(center)
+
+        const radius = Math.max(size.z * 0.04, 0.05)
+        const geo = new THREE.SphereGeometry(radius, 16, 12)
+
+        this.headlights.left = new THREE.Mesh(geo, this.headlights.material)
+        this.headlights.right = new THREE.Mesh(geo, this.headlights.material)
+
+        const x = bbox.max.x - radius * 0.2
+        const y = center.y - size.y * 0.25
+        const z = center.z + size.z * 0.2
+        this.headlights.left.position.set(x - center.x, -y - center.y, z - center.z)
+        this.headlights.right.position.set(x - center.x, y - center.y, z - center.z)
+
+        this.chassis.object.add(this.headlights.left)
+        this.chassis.object.add(this.headlights.right)
+
+        // Dynamic intensity (e.g., brighter when accelerating)
+        this.time.on('tick', () =>
+        {
+            this.headlights.material.emissiveIntensity = 0.5 + Math.abs(this.movement.localAcceleration.x) * 0.5
+        })
+
+        // Debug
+        if(this.debug)
+        {
+            const folder = this.debugFolder.addFolder('headlights')
+            folder.add(this.headlights.material, 'emissiveIntensity').min(0).max(2)
+        }
+    }
+
+    setSideMirrors()
+    {
+        if(this.config.cyberTruck)
+        {
+            return
+        }
+
+        // Procedural aerodynamic side mirrors (small boxes)
+        this.sideMirrors = {}
+        const bbox = new THREE.Box3().setFromObject(this.chassis.object)
+        const size = new THREE.Vector3()
+        const center = new THREE.Vector3()
+        bbox.getSize(size)
+        bbox.getCenter(center)
+
+        const mirrorGeo = new THREE.BoxGeometry(Math.max(size.x * 0.06, 0.1), Math.max(size.y * 0.06, 0.1), Math.max(size.z * 0.12, 0.1))
+        const mirrorMaterial = this.materials.shades.items.black
+
+        this.sideMirrors.left = new THREE.Mesh(mirrorGeo, mirrorMaterial)
+        this.sideMirrors.right = new THREE.Mesh(mirrorGeo, mirrorMaterial)
+
+        const x = center.x
+        const y = center.y + size.y * 0.55
+        const z = center.z + size.z * 0.05
+        this.sideMirrors.left.position.set(x - center.x, -y - center.y, z - center.z)
+        this.sideMirrors.right.position.set(x - center.x, y - center.y, z - center.z)
+
+        this.chassis.object.add(this.sideMirrors.left)
+        this.chassis.object.add(this.sideMirrors.right)
+
+        // Debug
+        if(this.debug)
+        {
+            const folder = this.debugFolder.addFolder('sideMirrors')
+            folder.add(this.sideMirrors.left.position, 'x').min(-2).max(0)
+            folder.add(this.sideMirrors.left.position, 'y').min(-1).max(1)
+            folder.add(this.sideMirrors.left.position, 'z').min(0).max(1)
+        }
+    }
+
+    setExhaust()
+    {
+        if(this.config.cyberTruck)
+        {
+            return
+        }
+
+        // Procedural central dual exhaust tips
+        this.exhaust = {}
+        const bbox = new THREE.Box3().setFromObject(this.chassis.object)
+        const size = new THREE.Vector3()
+        const center = new THREE.Vector3()
+        bbox.getSize(size)
+        bbox.getCenter(center)
+
+        const radius = Math.max(size.z * 0.05, 0.06)
+        const length = Math.max(size.x * 0.12, 0.16)
+        const geo = new THREE.CylinderGeometry(radius, radius, length, 16)
+        const mat = this.materials.shades.items.silver
+
+        this.exhaust.left = new THREE.Mesh(geo, mat)
+        this.exhaust.right = new THREE.Mesh(geo, mat)
+        this.exhaust.left.rotation.z = Math.PI * 0.5
+        this.exhaust.right.rotation.z = Math.PI * 0.5
+
+        const x = bbox.min.x - length * 0.25
+        const yOff = size.y * 0.08
+        const z = center.z - size.z * 0.35
+        this.exhaust.left.position.set(x - center.x, -yOff - center.y, z - center.z)
+        this.exhaust.right.position.set(x - center.x, yOff - center.y, z - center.z)
+
+        this.chassis.object.add(this.exhaust.left)
+        this.chassis.object.add(this.exhaust.right)
     }
 
     setTransformControls()

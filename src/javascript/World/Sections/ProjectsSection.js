@@ -71,7 +71,7 @@ export default class ProjectsSection
     {
         this.list = [
             {
-                name: 'Ball game Journey',
+                name: 'Portfolio',
                 imageSources:
                 [
                     './models/projects/threejsJourney/slideA.webp',
@@ -82,7 +82,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsThreejsJourneyFloorTexture,
                 link:
                 {
-                    href: 'https://ballgame-jade.vercel.app/',
+                    href: 'https://www.sohamchavan.site',
                     x: - 4.8,
                     y: - 3,
                     halfExtents:
@@ -105,9 +105,79 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsBonhomme10ansFloorTexture,
                 link:
                 {
-                    href: 'https://sohamchavan07.github.io/Portfolio/',
+                    href: 'https://porsche-casestudy.vercel.app',
                     x: - 4.8,
                     y: - 2,
+                    halfExtents:
+                    {
+                        x: 3.2,
+                        y: 1.5
+                    }
+                }
+            },
+
+            {
+                name: 'Madbox',
+                imageSources:
+                [
+                    './models/projects/madbox/slideA.jpg',
+                    './models/projects/madbox/slideB.jpg',
+                    './models/projects/madbox/slideC.jpg',
+                    './models/projects/madbox/slideD.jpg'
+
+                ],
+                floorTexture: this.resources.items.projectsMadboxFloorTexture,
+                link:
+                {
+                    href: 'https://tawade-kitchen.vercel.app',
+                    x: - 4.8,
+                    y: - 2.6,
+                    halfExtents:
+                    {
+                        x: 3.2,
+                        y: 1.5
+                    }
+                }
+            },
+
+            {
+                name: 'Luni',
+                imageSources:
+                [
+                    './models/projects/luni/slideA.webp',
+                    './models/projects/luni/slideB.webp',
+                    './models/projects/luni/slideC.webp',
+                    './models/projects/luni/slideD.webp'
+                ],
+                floorTexture: this.resources.items.projectsLuniFloorTexture,
+                link:
+                {
+                    href: 'https://lamborghini-case-study.vercel.app',
+                    x: - 4.8,
+                    y: - 1,
+                    halfExtents:
+                    {
+                        x: 3.2,
+                        y: 1.5
+                    }
+                }
+            },
+
+            {
+                name: 'Ferrari',
+                imageSources:
+                [
+                    './models/projects/ferrari/slideA.webp',
+                    './models/projects/ferrari/slideB.webp',
+                    './models/projects/ferrari/slideC.webp',
+                    './models/projects/ferrari/slideD.webp'
+                ],
+                floorTexture: this.resources.items.projectsFerrariFloorTexture,
+                link:
+                {
+                    href: 'https://ferrari-casestudy.vercel.app',
+                    x: - 4.8,
+                    y: - 0.5,
                     halfExtents:
                     {
                         x: 3.2,

@@ -17,10 +17,10 @@ export default class Floor
 
         // Colors
         this.colors = {}
-        this.colors.topLeft = '#f5883c'
-        this.colors.topRight = '#ff9043'
-        this.colors.bottomRight = '#fccf92'
-        this.colors.bottomLeft = '#f5aa58'
+        this.colors.topLeft = '#00ffff'
+        this.colors.topRight = '#00ffff'
+        this.colors.bottomRight = '#00ffff'
+        this.colors.bottomLeft = '#00ffff'
 
         // Material
         this.material = new FloorMaterial()
