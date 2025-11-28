@@ -71,7 +71,7 @@ export default class ProjectsSection
     {
         this.list = [
             {
-                name: 'portfolio',
+                name: 'Ball game Journey',
                 imageSources:
                 [
                     './models/projects/threejsJourney/slideA.webp',
@@ -93,9 +93,31 @@ export default class ProjectsSection
                 },
 
             },
-           
             {
-                name: 'kitchen',
+                name: 'Bonhomme | 10 ans',
+                imageSources:
+                [
+                    './models/projects/bonhomme10ans/slideA.webp',
+                    './models/projects/bonhomme10ans/slideB.webp',
+                    './models/projects/bonhomme10ans/slideC.webp',
+                    './models/projects/bonhomme10ans/slideD.webp'
+                ],
+                floorTexture: this.resources.items.projectsBonhomme10ansFloorTexture,
+                link:
+                {
+                    href: 'https://porsche-casestudy.vercel.app',
+                    x: - 4.8,
+                    y: - 2,
+                    halfExtents:
+                    {
+                        x: 3.2,
+                        y: 1.5
+                    }
+                }
+            },
+
+            {
+                name: 'Madbox',
                 imageSources:
                 [
                     './models/projects/madbox/slideA.jpg',
@@ -119,7 +141,7 @@ export default class ProjectsSection
             },
 
             {
-                name: 'freelance project',
+                name: 'Luni',
                 imageSources:
                 [
                     './models/projects/luni/slideA.webp',
@@ -130,7 +152,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsLuniFloorTexture,
                 link:
                 {
-                    href: 'https://shreyash-lavhate.vercel.app/',
+                    href: 'https://lamborghini-case-study.vercel.app',
                     x: - 4.8,
                     y: - 1,
                     halfExtents:
@@ -164,31 +186,6 @@ export default class ProjectsSection
                 }
             },
 
-            {
-                name: 'porsche',
-                imageSources:
-                [
-                    './models/projects/bonhomme10ans/slideA.webp',
-                    './models/projects/bonhomme10ans/slideB.webp',
-                    './models/projects/bonhomme10ans/slideC.webp',
-                    './models/projects/bonhomme10ans/slideD.webp'
-                ],
-                floorTexture: this.resources.items.projectsBonhomme10ansFloorTexture,
-                link:
-                {
-                    href: 'https://porsche-casestudy.vercel.app',
-                    x: - 4.8,
-                    y: - 2,
-                    halfExtents:
-                    {
-                        x: 3.2,
-                        y: 1.5
-                    }
-                }
-            },
-
-
-           
             // {
             //     name: 'Zenly',
             //     imageSources:
