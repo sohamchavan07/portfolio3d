@@ -107,7 +107,7 @@ export default class Resources extends EventEmitter
             { name: 'projectsMadboxFloor', source: './models/projects/madbox/floorTexture.png', type: 'texture' },
             { name: 'projectsFerrariFloor', source: './models/projects/ferrari/floorTexture.webp', type: 'texture' },
 
-            // { name: 'projectsZenlyFloor', source: './models/projects/zenly/floorTexture.png', type: 'texture' },
+            { name: 'projectsShivkumarrealtorsFloor', source: './models/projects/Shivkumarrealtors/floorTexture.png', type: 'texture' },
 
 
 

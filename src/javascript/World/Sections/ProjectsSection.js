@@ -120,6 +120,31 @@ export default class ProjectsSection
             },
 
             {
+                name: 'Shivkumarrealtors',
+                imageSources:
+                [
+                    './models/projects/Shivkumarrealtors/slideA.jpg',
+                    './models/projects/Shivkumarrealtors/slideB.jpg',
+                    './models/projects/Shivkumarrealtors/slideC.jpg',
+                    './models/projects/Shivkumarrealtors/slideD.jpg'
+
+                ],
+                floorTexture: this.resources.items.projectsShivkumarrealtorsFloorTexture,
+                link:
+                {
+                    href: 'https://shivkumarrealtors.framer.website',
+                    x: - 4.8,
+                    y: - 2.6,
+                    halfExtents:
+                    {
+                        x: 3.2,
+                        y: 1.5
+                    }
+                }
+            },
+
+
+            {
                 name: 'freelanceing',
                 imageSources:
                 [
