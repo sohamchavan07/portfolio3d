@@ -106,12 +106,8 @@ export default class Resources extends EventEmitter
             { name: 'projectsLuniFloor', source: './models/projects/luni/floorTexture.webp', type: 'texture' },
             { name: 'projectsMadboxFloor', source: './models/projects/madbox/floorTexture.png', type: 'texture' },
             { name: 'projectsFerrariFloor', source: './models/projects/ferrari/floorTexture.webp', type: 'texture' },
-
             { name: 'projectsShivkumarrealtorsFloor', source: './models/projects/Shivkumarrealtors/floorTexture.png', type: 'texture' },
-
-
-
-            // { name: 'projectsGleecChatFloor', source: './models/projects/gleecChat/floorTexture.png', type: 'texture' },
+            { name: 'projectsGleecChatFloor', source: './models/projects/gleecChat/floorTexture.png', type: 'texture' },
             // { name: 'projectsKepplerFloor', source: './models/projects/keppler/floorTexture.png', type: 'texture' },
 
             // Information

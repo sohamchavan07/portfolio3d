@@ -168,6 +168,29 @@ export default class ProjectsSection
             },
 
             {
+                name: 'gleecChat',
+                imageSources:
+                [
+                    './models/projects/gleecChat/slideA.jpg',
+                    './models/projects/gleecChat/slideB.jpg',
+                    './models/projects/gleecChat/slideC.jpg',
+                    './models/projects/gleecChat/slideD.jpg'
+                ],
+                floorTexture: this.resources.items.projectsGleecChatFloorTexture,
+                link:
+                {
+                    href: 'https://hotel-nyala.vercel.app',
+                    x: - 4.8,
+                    y: - 1,
+                    halfExtents:
+                    {
+                        x: 3.2,
+                        y: 1.5
+                    }
+                }
+            },
+
+            {
                 name: 'Ferrari',
                 imageSources:
                 [
