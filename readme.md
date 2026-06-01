@@ -6,7 +6,7 @@ An interactive 3D portfolio website showcasing creative projects with stunning v
 • HTML5(#)
 • CSS3(#)
 • Parcel(#)
-• Live Demo(https://your-demo-url.com)
+• Live Demo((https://portfolio.sohamchavan.site/))
 • Portfolio(https://www.sohamchavan.site/)
 
 ---
