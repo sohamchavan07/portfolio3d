@@ -29,7 +29,15 @@ export default class ThreejsJourney
         if(this.prevent)
             return
 
-        this.setYesNo()
+        if(this.$yes && this.$no)
+        {
+            this.setYesNo()
+        }
+        else
+        {
+            console.warn('ThreejsJourney: yes/no buttons are missing, skipping interactive prompt.')
+        }
+
         this.setLog()
 
         this.time.on('tick', () =>
@@ -48,6 +56,9 @@ export default class ThreejsJourney
 
     setYesNo()
     {
+        if(!this.$yes || !this.$no)
+            return
+
         // Clicks
         this.$yes.addEventListener('click', () =>
         {
