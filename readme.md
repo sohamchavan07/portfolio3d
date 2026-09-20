@@ -6,8 +6,8 @@ An interactive 3D portfolio website showcasing creative projects with stunning v
 • HTML5(#)
 • CSS3(#)
 • Parcel(#)
-• Live Demo((https://portfolio.sohamchavan.site/))
-• Portfolio(https://www.sohamchavan.site/)
+• Live Demo((https://portfolio.sohamcode.online/))
+• Portfolio(https://www.sohamcode.online/)
 
 ---
 
@@ -120,7 +120,7 @@ Contributions, issues and feature requests are welcome!
 👤 Author
 Soham Chavan
 
-• Portfolio(https://www.sohamchavan.site/)
+• Portfolio(https://www.sohamcode.online/)
 • LinkedIn(https://www.linkedin.com/in/sohamchavan07/)
 • X(https://x.com/soham_chavan07)
 

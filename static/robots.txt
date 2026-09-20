@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.sohamchavan.site/sitemap.xml
+Sitemap: https://www.sohamcode.online/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1

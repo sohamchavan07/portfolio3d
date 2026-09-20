@@ -82,7 +82,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsThreejsJourneyFloorTexture,
                 link:
                 {
-                    href: 'https://www.sohamchavan.site',
+                    href: 'https://www.sohamcode.online',
                     x: - 4.8,
                     y: - 3,
                     halfExtents:
